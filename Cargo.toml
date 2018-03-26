@@ -3,7 +3,7 @@ name = "simple-bind"
 version = "0.1.0"
 authors = ["Will Crichton <wcrichto@cs.stanford.edu>"]
 description = "One-line non-exhaustive binds"
-license = "Apache 2.0"
+license = "Apache-2.0"
 repository = "https://github.com/willcrichton/simple-bind"
 documentation = "https://docs.rs/simple-bind"
 
