@@ -14,7 +14,7 @@ use syn::punctuated::Punctuated;
 
 fn trans_pat(pat: syn::Pat) -> (Tokens, Tokens) {
   match pat {
-    Pat::Ident(PatIdent { ident, mutability, by_ref, .. }) => {
+    Pat::Ident(PatIdent { ident, .. }) => {
       (quote! { #ident }, quote! { #pat })
     }
     Pat::Ref(PatRef { box pat, mutability, .. }) => {
