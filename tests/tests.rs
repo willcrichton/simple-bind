@@ -5,7 +5,7 @@ extern crate simple_bind;
 use simple_bind::bind;
 
 enum B { Field(i32) }
-enum A { Single(i32), Nested(B), Multi(i32, i32), Struct{x: i32} }
+enum A { Single(i32), Nested(B), Multi(i32, i32), Struct{x: i32}, Ref(String) }
 
 #[test]
 fn basic() {
@@ -38,4 +38,18 @@ fn struct_() {
   let y = A::Struct{x: 1};
   bind!{let A::Struct{x} = y;}
   assert_eq!(x, 1);
+}
+
+#[test]
+fn ref_() {
+  let x = A::Ref(String::from("Hello"));
+  bind!{let &A::Ref(ref y) = &x;}
+  assert_eq!(y, "Hello");
+}
+
+#[test]
+fn mut_ref() {
+  let mut x = A::Ref(String::from("Hello"));
+  bind!{let &mut A::Ref(ref mut y) = &mut x;}
+  *y = String::from("Hi");
 }
