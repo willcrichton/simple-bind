@@ -53,3 +53,10 @@ fn mut_ref() {
   bind!{let &mut A::Ref(ref mut y) = &mut x;}
   *y = String::from("Hi");
 }
+
+#[test]
+fn mut_ref2() {
+  let mut x = A::Single(1);
+  bind!{let &mut A::Single(ref mut y) = &mut x;}
+  *y = 2;
+}

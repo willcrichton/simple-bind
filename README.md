@@ -1,6 +1,8 @@
 # simple-bind: one-line non-exhaustive binds in Rust
 
 ```rust
+// Here's a brief example that demonstrates how simple-bind works.
+
 #![feature(proc_macro, pattern_parentheses)]
 extern crate simple_bind;
 use simple_bind::bind;
@@ -57,11 +59,20 @@ use simple_bind::bind;
 fn main() {
   enum B { Quux(i32) };
   enum A { Foo(i32), Bar{y: i32}, Baz(B) };
+
+  // Simple binds
   bind!{let A::Foo(x) = A::Foo(10);}
 
+  // Struct binds
   let s = A::Bar{y: 1};
   bind!{let A::Bar{y} = s;}
 
+  // Nested binds
   bind!{let A::Baz(B::Quux(x)) = A::Baz(B::Quux(10));}
+
+  // Reference binds
+  let s = A::Foo(10);
+  bind!{let &mut A::Foo(ref mut y) = &mut s;}
+  *y = 3;
 }
 ```
