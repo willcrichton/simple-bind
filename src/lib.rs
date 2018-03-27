@@ -18,7 +18,12 @@ fn trans_pat(pat: syn::Pat) -> (Tokens, Tokens) {
       (quote! { () }, quote! { _ })
     }
     Pat::Ident(PatIdent { ident, .. }) => {
-      (quote! { #ident }, quote! { #pat })
+      // HACK: syn stopped parsing _ as Wild, instead as Ident?
+      if format!("{}", ident) == "_" {
+        (quote! { () }, quote! { _ })
+      } else {
+        (quote! { #ident }, quote! { #pat })
+      }
     }
     Pat::Ref(PatRef { box pat, mutability, .. }) => {
       let (lhs, rhs) = trans_pat(pat);
