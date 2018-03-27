@@ -44,7 +44,7 @@ rustup override set nightly
 Add this line to your `cargo.toml`:
 ```toml
 [dependencies]
-simple-bind = "0.1.0"
+simple-bind = "0.1.1"
 ```
 
 To your main module file (`lib.rs` or `main.rs`), add:
