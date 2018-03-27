@@ -60,3 +60,9 @@ fn mut_ref2() {
   bind!{let &mut A::Single(ref mut y) = &mut x;}
   *y = 2;
 }
+
+#[test]
+fn wildcard() {
+  bind!{let A::Multi(_, x) = A::Multi(1, 2);}
+  assert_eq!(x, 2);
+}
