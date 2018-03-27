@@ -1,7 +1,7 @@
 # simple-bind: one-line non-exhaustive binds in Rust
+[![Build Status](https://travis-ci.org/willcrichton/simple-bind.svg?branch=master)](https://travis-ci.org/willcrichton/simple-bind)
 [![](https://img.shields.io/crates/v/simple-bind.svg)](https://crates.io/crates/simple-bind)
 [![](https://docs.rs/simple-bind/badge.svg)](https://docs.rs/crate/simple-bind/)
-[![Build Status](https://travis-ci.org/willcrichton/simple-bind.svg?branch=master)](https://travis-ci.org/willcrichton/simple-bind)
 
 **Nightly-only crate.**
 
@@ -42,25 +42,25 @@ rustup override set nightly
 ```
 
 Add this line to your `cargo.toml`:
-```
+```toml
 [dependencies]
 simple-bind = "0.1.0"
 ```
 
 To your main module file (`lib.rs` or `main.rs`), add:
-```
+```rust
 #![feature(proc_macro, pattern_parentheses)]
 extern crate simple_bind;
 ```
 
 Then wherever you want to use the macro, use `use` (not `#[macro_use]`):
-```
+```rust
 use simple_bind::bind;
 ```
 
 ## Examples
 
-```
+```rust
 fn main() {
   enum B { Quux(i32) };
   enum A { Foo(i32), Bar{y: i32}, Baz(B) };
@@ -76,7 +76,7 @@ fn main() {
   bind!{let A::Baz(B::Quux(x)) = A::Baz(B::Quux(10));}
 
   // Reference binds
-  let s = A::Foo(10);
+  let mut s = A::Foo(10);
   bind!{let &mut A::Foo(ref mut y) = &mut s;}
   *y = 3;
 }
