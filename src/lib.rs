@@ -35,6 +35,20 @@ fn trans_pat(pat: syn::Pat) -> (Tokens, Tokens) {
   }
 }
 
+
+/// Non-exhaustively binds a single variant of an enum.
+///
+/// # Examples
+///
+/// ```
+/// use simple_bind::bind;
+/// enum A { Foo(i32), Bar };
+///
+/// let x = A::Foo(10);
+/// bind!{let A::Foo(y) = x;}
+///
+/// assert_eq!(y, 10);
+/// ```
 #[proc_macro]
 pub fn bind(input: TokenStream) -> TokenStream {
   let input: Stmt =

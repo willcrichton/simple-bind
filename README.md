@@ -81,3 +81,7 @@ fn main() {
   *y = 3;
 }
 ```
+
+## Issues
+
+This implementation just covers cases I've run in to, and is not exhaustive to all possible binds. If you finds a problem, feel free to submit an issue or a PR!
