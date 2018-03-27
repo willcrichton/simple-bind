@@ -1,7 +1,7 @@
 # simple-bind: one-line non-exhaustive binds in Rust
 [![Build Status](https://travis-ci.org/willcrichton/simple-bind.svg?branch=master)](https://travis-ci.org/willcrichton/simple-bind)
 [![](https://img.shields.io/crates/v/simple-bind.svg)](https://crates.io/crates/simple-bind)
-[![](https://docs.rs/simple-bind/badge.svg)](https://docs.rs/crate/simple-bind/)
+[![](https://docs.rs/simple-bind/badge.svg)](https://docs.rs/simple-bind/)
 
 **Nightly-only crate.**
 
