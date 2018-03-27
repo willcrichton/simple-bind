@@ -35,7 +35,13 @@ fn trans_pat(pat: syn::Pat) -> (Tokens, Tokens) {
       (quote! { (#lhs) }, quote! { #path (#rhs) })
     }
     Pat::Struct(PatStruct { path, fields, .. }) => {
-      (quote! { (#fields) }, quote! { #path { #fields, .. } })
+      let (lhs, rhs): (Punctuated<Tokens, Comma>, Punctuated<Tokens, Comma>) =
+        fields.into_iter().map(|pat| {
+          let (lhs, rhs) = trans_pat(*pat.pat.clone());
+          let member = pat.member;
+          (lhs, quote!{ #member : #rhs })
+        }).unzip();
+      (quote! { (#lhs) }, quote! { #path { #rhs, .. } })
     }
     _ => {
       panic!("Pattern must be an enum (e.g. A(...)) or struct (e.g. A{...})")
@@ -66,7 +72,7 @@ pub fn bind(input: TokenStream) -> TokenStream {
     if let Some((_, init)) = init {
       let (lhs, rhs) = trans_pat(pat);
       quote!{
-        let #lhs = match #init { #rhs => { #lhs }, _ => unreachable!() };
+        let #lhs = #[allow(non_shorthand_field_patterns)] match #init { #rhs => { #lhs }, _ => unreachable!() };
       }
     } else {
       panic!("Let binding must have a right-hand side")

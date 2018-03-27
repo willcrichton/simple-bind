@@ -8,7 +8,7 @@
 ```rust
 // Here's a brief example that demonstrates how simple-bind works.
 
-#![feature(proc_macro, pattern_parentheses)]
+#![feature(proc_macro, pattern_parentheses, stmt_expr_attributes)]
 extern crate simple_bind;
 use simple_bind::bind;
 
@@ -44,12 +44,12 @@ rustup override set nightly
 Add this line to your `cargo.toml`:
 ```toml
 [dependencies]
-simple-bind = "0.1.4"
+simple-bind = "0.1.5"
 ```
 
 To your main module file (`lib.rs` or `main.rs`), add:
 ```rust
-#![feature(proc_macro, pattern_parentheses)]
+#![feature(proc_macro, pattern_parentheses, stmt_expr_attributes)]
 extern crate simple_bind;
 ```
 

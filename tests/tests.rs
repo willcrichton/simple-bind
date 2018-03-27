@@ -1,4 +1,4 @@
-#![feature(proc_macro, pattern_parentheses)]
+#![feature(proc_macro, pattern_parentheses, stmt_expr_attributes)]
 
 extern crate simple_bind;
 
@@ -65,4 +65,11 @@ fn mut_ref2() {
 fn wildcard() {
   bind!{let A::Multi(_, x) = A::Multi(1, 2);}
   assert_eq!(x, 2);
+}
+
+#[test]
+fn struct_ref() {
+  let x = A::Struct{x: 1};
+  bind!{let A::Struct{x: ref y} = x;}
+  assert_eq!(*y, 1);
 }
