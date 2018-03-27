@@ -53,7 +53,7 @@ To your main module file (`lib.rs` or `main.rs`), add:
 extern crate simple_bind;
 ```
 
-Then wherever you want to use the macro, use `use` (not `#[macro_use]`):
+Then wherever you want to use the macro, use normal imports (i.e. not `#[macro_use]`):
 ```rust
 use simple_bind::bind;
 ```
@@ -84,4 +84,4 @@ fn main() {
 
 ## Issues
 
-This implementation just covers cases I've run in to, and is not exhaustive to all possible binds. If you finds a problem, feel free to submit an issue or a PR!
+This implementation just covers cases I've run in to, and is not exhaustive to all possible binds. If you find a problem, feel free to submit an issue or a PR!
