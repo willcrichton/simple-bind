@@ -1,6 +1,6 @@
 [package]
 name = "simple-bind"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Will Crichton <wcrichto@cs.stanford.edu>"]
 description = "One-line non-exhaustive binds"
 license = "Apache-2.0"
