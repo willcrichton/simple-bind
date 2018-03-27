@@ -40,7 +40,7 @@ fn trans_pat(pat: syn::Pat) -> (Tokens, Tokens) {
 ///
 /// # Examples
 ///
-/// ```
+/// ```ignore
 /// use simple_bind::bind;
 /// enum A { Foo(i32), Bar };
 ///
