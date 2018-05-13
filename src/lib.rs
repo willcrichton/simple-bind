@@ -68,9 +68,9 @@ pub fn bind(input: TokenStream) -> TokenStream {
   let input: Stmt =
     syn::parse(input).expect("Failed to parse into let binding");
 
-  let binding = if let Stmt::Local(Local { box pat, init, .. }) = input {
+  let binding = if let Stmt::Local(Local { pats, init, .. }) = input {
     if let Some((_, init)) = init {
-      let (lhs, rhs) = trans_pat(pat);
+      let (lhs, rhs) = trans_pat(pats[0].clone());
       quote!{
         let #lhs = #[allow(non_shorthand_field_patterns)] match #init { #rhs => { #lhs }, _ => unreachable!() };
       }

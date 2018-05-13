@@ -1,4 +1,4 @@
-#![feature(proc_macro, pattern_parentheses, stmt_expr_attributes)]
+#![feature(proc_macro, proc_macro_non_items, stmt_expr_attributes, pattern_parentheses)]
 
 extern crate simple_bind;
 

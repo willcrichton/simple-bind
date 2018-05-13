@@ -11,6 +11,6 @@ documentation = "https://docs.rs/simple-bind"
 proc-macro = true
 
 [dependencies]
-proc-macro2 = { version = "0.2", features = ["nightly"] }
-syn = {version = "0.12", features = ["full", "extra-traits"]}
-quote = "0.4"
+proc-macro2 = { version = "0.3.8", features = ["nightly"] }
+syn = {version = "0.13", features = ["full", "extra-traits"]}
+quote = "0.5"
